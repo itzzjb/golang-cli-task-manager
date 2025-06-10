@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Learn Go",
+    "description": "Complete the Go programming course",
+    "completed": false,
+    "created_at": "0001-01-01T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Build a CLI",
+    "description": "Create a command-line interface for task management",
+    "completed": false,
+    "created_at": "0001-01-01T00:00:00Z"
+  }
+]
