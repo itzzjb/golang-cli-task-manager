@@ -36,3 +36,6 @@ func main() {
 	}
 
 }
+
+// go build -o task-manager-cli main.go
+// ./task-manager-cli

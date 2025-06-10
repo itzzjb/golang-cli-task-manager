@@ -35,3 +35,6 @@ func main() {
 		return
 	}
 }
+
+// go build -o task-manager-cli main.go
+// ./task-manager-cli add "Learn Go with Cobra"
