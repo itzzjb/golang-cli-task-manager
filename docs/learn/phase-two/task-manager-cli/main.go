@@ -6,13 +6,38 @@ import (
 )
 
 func main() {
+
 	var name = flag.String("name", "Default Name", "name of the task")
 	var verbose = flag.Bool("verbose", false, "enable verbose output")
+	var count = flag.Int("count", 1, "number of times to greet")
+	var timeout = flag.Duration("timeout", 0, "timeout duration")
+
 	flag.Parse()
-	if *verbose {
-		fmt.Println("Greeting to", *name, "verbosely")
+
+	if *timeout > 0 {
+		fmt.Println("Timeout set to", *timeout)
 	} else {
-		fmt.Println("Greeting to", *name)
+		fmt.Println("No timeout set")
+	}
+
+	if *count < 1 {
+		fmt.Println("Count must be at least 1")
+		return
+	} else if *count > 1 {
+		for i := 0; i < *count; i++ {
+			if *verbose {
+				fmt.Printf("Greeting %d: Hello, %s!\n", i+1, *name)
+			} else {
+				fmt.Printf("Hello, %s!\n", *name)
+			}
+		}
+		return
+	} else {
+		if *verbose {
+			fmt.Println("Greeting Hello once to", *name, "verbosely")
+		} else {
+			fmt.Println("Greeting Hello once to", *name)
+		}
 	}
 }
 
