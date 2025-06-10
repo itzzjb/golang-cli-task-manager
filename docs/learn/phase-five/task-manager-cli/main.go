@@ -27,6 +27,15 @@ func saveTasks(tasks []Task, filename string) error {
 }
 
 func loadTasks(filename string) ([]Task, error) {
+
+	// _ indicates that we are not interested in the first return value (the file info).
+	_, err := os.Stat(filename) // Check if the file exists.
+	if os.IsNotExist(err) {
+		return nil, os.ErrNotExist
+	}
+	// os.IsNotExist checks if the error is due to the file not existing.
+	// os.ErrNotExist is a sentinel error that indicates that the file does not exist.
+
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
@@ -67,7 +76,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	
+
 	for _, task := range loadedTasks {
 		println("Task ID:", task.ID)
 		println("Title:", task.Title)
